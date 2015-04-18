@@ -147,7 +147,10 @@ func (c *Cell) SetBool(b bool) {
 // TODO: Determine if the current return value is
 // appropriate for types other than CellTypeBool.
 func (c *Cell) Bool() bool {
-	return c.Value == "1"
+	if c.cellType == CellTypeBool {
+		return c.Value == "1"
+	}
+	return c.Value != ""
 }
 
 // SetFormula sets the format string for a cell.
